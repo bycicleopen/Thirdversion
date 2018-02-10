@@ -1,5 +1,4 @@
 <?php echo $header; ?>
-<?php echo $product_id; ?>
 <!-- Breadcrumbs -->
 <div class="breadcrumbs">
 	<div class="container">
@@ -95,7 +94,7 @@
 							<!-- item top -->
 							<div class="item-top">
 								<div class="row">
-
+									
 									<!-- item photo -->
 									<div class="col-lg-7 col-md-6 col-sm-6">
 										<?php if ($thumb || $images) { ?>	
@@ -158,7 +157,7 @@
 																		
 																		<!-- color -->
 																		<div class="col-md-6 col-sm-6">
-	
+																			
 																			<div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
 																				<span class="info-type-label"><label class="control-label"><?php echo $option['name']; ?></label></span>
 																				<div id="input-option<?php echo $option['product_option_id']; ?>">
@@ -190,7 +189,7 @@
 																		</div>		
 																		
 																	<?php } ?>
-								
+																	
 																</div>
 															</div>
 															
@@ -198,7 +197,7 @@
 														<?php } ?>
 													</div>
 												<?php } ?>
-			
+												
 												<!-- price -->
 												<div class="item-info-price">
 													<div class="row">
@@ -208,28 +207,41 @@
 																<div class="info-price-bonus-wrap">
 																	<span class="info-price-bonus-sum">+<?php echo $benefit; ?><span class="info-price-bonus-currancy">грн</span>
 																	</span>
-																	<span class="info-price-bonus-descr">бонус до <?php echo $date_end; ?></span>
+																	<span class="info-price-bonus-descr"><?php echo $bonus_date; ?> <?php echo $date_end; ?></span>
 																</div>
 															<?php } ?>	
-														</div>
-														<div class="col-md-6 col-sm-6">
-															<!-- item price -->
-															<div class="info-price-wrap">
-																<?php if ($special) { ?>
-																	<span class="info-price"><?php echo $special; ?></span>
-																	<span class="info-price-old"><?php echo $price; ?></span>
-																	<?php } else { ?>
+															
+															<?php if ($discount_price) { ?>
+																<div class="">
+																	<span class="product-label-price">-<?php echo $discount_price?><span class="info-price-bonus-currancy">грн</span>
+																	</span>
+																	<span class="info-price-label-descr"><?php echo $discount_date; ?> <?php echo $discount_date_end; ?></span>
 																	
-																	<span class="info-price"><?php echo $price; ?></span>	
+																	<span class="product-label product-label_discount">
+																		
+																		
+																	</div>
 																<?php } ?>	
+																
+															</div>
+															<div class="col-md-6 col-sm-6">
+																<!-- item price -->
+																<div class="info-price-wrap">
+																	<?php if ($special) { ?>
+																		<span class="info-price"><?php echo $special; ?></span>
+																		<span class="info-price-old"><?php echo $price; ?></span>
+																		<?php } else { ?>
+																		
+																		<span class="info-price"><?php echo $price; ?></span>	
+																	<?php } ?>	
+																</div>
 															</div>
 														</div>
 													</div>
-												</div>
-												<!-- purchase form-->
-												<!-- purchase form-->
-												<div class="">
-													<div class="row">
+													<!-- purchase form-->
+													<!-- purchase form-->
+													<div class="">
+														<div class="row">
 														<!-- amount -->
 														<div class="col-md-6 col-sm-6">
 															<div class="info-purchase-count">
@@ -369,10 +381,10 @@
 								<!-- tabs content -->
 								<div class="tabs-content-wrap">
 									
-										<div id="tab1" class="tabs-content is-active">
-											<div class="tab-table-wrap">
-												<?php if ($attribute_groups) { ?>
-													<table class="tab-table">
+									<div id="tab1" class="tabs-content is-active">
+										<div class="tab-table-wrap">
+											<?php if ($attribute_groups) { ?>
+												<table class="tab-table">
 													<?php foreach ($attribute_groups as $attribute_group) { ?>
 														<thead>
 															<tr>
@@ -393,14 +405,14 @@
 													<?php } ?>
 												</table>	
 												<?php } else { ?>
-													<table class="tab-table">
-															<tr>
-																<td colspan="2"><strong>&nbsp;&nbsp;&nbsp;</strong></td>
-															</tr>
-													</table>
-											    <?php } ?>
-											</div>
+												<table class="tab-table">
+													<tr>
+														<td colspan="2"><strong>&nbsp;&nbsp;&nbsp;</strong></td>
+													</tr>
+												</table>
+											<?php } ?>
 										</div>
+									</div>
 									
 									
 									
@@ -619,14 +631,14 @@
 									$('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 									
 									$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-
+									
 									//$('html, body').animate({ scrollTop: 0 }, 'slow');
-
+									
                                     setTimeout(function () {
                                         //$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
                                         $('#cart > button').html('<span class="header-user-icon"><span class="icon"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_cart"></use></svg></span></span><span class="header-user-text">Корзина</span><span class="add-count add-count_cart header-user-count" data-value=" ' + json['total'] + '"></span>');
                                         $('.navbar-user_link #cart > button').html('<class"header-user-icon"><span class="icon"><svg><use xlink:href="#icon_cart"></use></svg></span></span><span class="add-count add-count_cart header-user-count" data-value="' + json['total'] + '"></span>');
-                                    }, 100);
+									}, 100);
 									
 									$('#cart > ul').load('index.php?route=common/cart/info ul li');
 								}

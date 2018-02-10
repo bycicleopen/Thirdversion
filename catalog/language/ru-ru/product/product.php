@@ -43,7 +43,8 @@ $_['entry_compare']           = 'К сравнению';
 $_['entry_oneclick']           = 'Купить в один клик';
 $_['entry_spoffer']            = 'Специальное предложение';
 $_['entry_spoffertext']        = 'При покупке велосипеда - в подарок замок!';
-
+$_['bonus_date']               = 'бонус до:';
+$_['discount_date']            = 'скидка до:';
 
 // Tabs
 $_['tab_description']                         = 'Описание';

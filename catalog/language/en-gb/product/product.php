@@ -39,10 +39,12 @@ $_['entry_rating']             = 'Rating';
 $_['entry_good']               = 'Good';
 $_['entry_bad']                = 'Bad';
 $_['entry_favorite']           = 'To favorites';
-$_['entry_compare']           = 'To compare';
+$_['entry_compare']            = 'To compare';
 $_['entry_oneclick']           = 'Buy in one click';
 $_['entry_spoffer']            = 'Special offer';
 $_['entry_spoffertext']        = 'When buying a bicycle - a gift to the castle!';
+$_['bonus_date']               = 'bonus up to:';
+$_['discount_date']            = 'discount up to:';
 
 
 // Tabs
