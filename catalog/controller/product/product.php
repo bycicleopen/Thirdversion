@@ -330,7 +330,7 @@
 				}
 				if ((float)$product_info['special']) {
 					$data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-					$data['benefit'] = $this->currency->format($this->tax->calculate($product_info['mybenefit'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					
 					$data['date_end'] = $product_info['date_end'];
 					
 					} else {
@@ -343,11 +343,26 @@
 					$data['tax'] = false;
 				}
 				
+					$data['discount_price'] = false; 
+				    $data['discount_date_end'] = false;
+				
 				$discounts = $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
 				
 				foreach ($discounts as $discount) {
-					$data['discount_price']    = $this->currency->format($this->tax->calculate($discount['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-					$data['discount_date_end'] = $discount['date_end'];		
+					$oldprice = $product_info['price'];
+					$discount_price = $this->currency->format($this->tax->calculate($discount['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					$data['discount_price']  = $discount_price;
+					
+					$data['discount_date_end'] = $discount['date_end'];	
+				    $data['benefit'] = $this->currency->format($this->tax->calculate($product_info['mybenefit'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);			
+					$data['myprice'] = $this->currency->format($this->tax->calculate($product_info['myprice'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);			
+					
+					//$data['price'] = $discount_price;
+					//$data['price'] = $this->currency->format($this->tax->calculate($oldprice, null, null, $this->session->data['currency']);
+					//$this->currency->format($this->tax->calculate($oldprice, $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					//$data['price'] = $price
+					
+					//$product_info['price'];			
 				}
 				
 				$data['options'] = array();

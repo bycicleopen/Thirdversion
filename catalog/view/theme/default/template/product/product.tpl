@@ -203,9 +203,9 @@
 													<div class="row">
 														<div class="col-md-6 col-sm-6">
 															<!-- price bonus -->
-															<?php if ($special) { ?>
+															<?php if (($special) && (!$discount_price)) { ?>
 																<div class="info-price-bonus-wrap">
-																	<span class="info-price-bonus-sum">+<?php echo $benefit; ?><span class="info-price-bonus-currancy">грн</span>
+																	<span class="info-price-bonus-sum">+<?php echo $special; ?>
 																	</span>
 																	<span class="info-price-bonus-descr"><?php echo $bonus_date; ?> <?php echo $date_end; ?></span>
 																</div>
@@ -213,7 +213,7 @@
 															
 															<?php if ($discount_price) { ?>
 																<div class="">
-																	<span class="product-label-price">-<?php echo $discount_price?><span class="info-price-bonus-currancy">грн</span>
+																	<span class="product-label-price">-<?php echo $benefit?>
 																	</span>
 																	<span class="info-price-label-descr"><?php echo $discount_date; ?> <?php echo $discount_date_end; ?></span>
 																	
@@ -227,9 +227,9 @@
 															<div class="col-md-6 col-sm-6">
 																<!-- item price -->
 																<div class="info-price-wrap">
-																	<?php if ($special) { ?>
-																		<span class="info-price"><?php echo $special; ?></span>
-																		<span class="info-price-old"><?php echo $price; ?></span>
+																	<?php if ($discount_price) { ?>
+																		<span class="info-price"><?php echo $discount_price; ?></span>
+																		<span class="info-price-old"><?php echo $myprice; ?></span>
 																		<?php } else { ?>
 																		
 																		<span class="info-price"><?php echo $price; ?></span>	
